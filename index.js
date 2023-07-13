@@ -1,7 +1,6 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 3000;
 
 // Create template for responses/images
 // rect_width = 10 (for 1 character) + 5 per extra character
@@ -89,11 +88,11 @@ app.get('/api/:user/:projectName', async (req, res) => {
 	}
 });
 
+const port = process.env.PORT || 3000;
+
 // Start the server
 const server = app.listen(port, 'localhost', () => {
 	const serverIp = server.address().address;
 	const serverPort = server.address().port;
 	console.log(`Server is running at http://${serverIp}:${serverPort}`);
 });
-
-module.exports = app;

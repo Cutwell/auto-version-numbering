@@ -4,6 +4,7 @@
   "description": "React component for automatic version numbering of Github projects.",
   "main": "index.js",
   "scripts": {
+	"start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
