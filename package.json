@@ -1,7 +1,7 @@
 {
   "name": "auto-version-numbering",
   "version": "1.0.0",
-  "description": "React component for automatic version numbering of Github projects.",
+  "description": "NodeJS API service for generating version number .svg images for GitHub projects..",
   "main": "index.js",
   "scripts": {
 	"start": "node index.js",
