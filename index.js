@@ -21,7 +21,7 @@ const templateSVG = `
 `;
 
 
-app.get('/test/:user/:projectName', async (req, res) => {
+app.get('/preview/:user/:projectName', async (req, res) => {
 	try {
 		// collect own IP and port for internal request
 		const serverIp = server.address().address;
