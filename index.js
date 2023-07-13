@@ -70,12 +70,13 @@ app.get('/api/:user/:projectName', async (req, res) => {
 		const response = await axios.get(`https://api.github.com/repos/${user}/${projectName}/releases`);
 		const releases = response.data;
 		const latest = releases[0];
+		const tag_name = latest.tag_name || "0"
 
 		const rect_width = 10 + ((latest.tag_name.length - 1) * 5);
 		const svg_width = rect_width + 2;
 
 		// format info into SVG
-		const formattedSVG = templateSVG.replace('{{tag_name}}', latest.tag_name).replace('{{svg_width}}', svg_width).replace('{{rect_width}}', rect_width).replace(/{{color}}/g, color);
+		const formattedSVG = templateSVG.replace('{{tag_name}}', tag_name).replace('{{svg_width}}', svg_width).replace('{{rect_width}}', rect_width).replace(/{{color}}/g, color);
 
 		// Set the response content type to SVG
 		res.set('Content-Type', 'text/svg+xml');
