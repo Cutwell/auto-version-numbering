@@ -1,5 +1,5 @@
 # Automatic Version Numbering
- NodeJS API service for generating version number `.svg` images for GitHub project.
+ NodeJS API service for generating version number `.svg` images for GitHub projects.
 
 ## Routing
 |`https://auto-version-numbering.vercel.app`|`/api` OR `/preview`|`/:user`|`/:projectName`|`?color=:hexcode`|
