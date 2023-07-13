@@ -1,2 +1,2 @@
 # Automatic Version Numbering
- React component for automatic version numbering of Github projects.
+ NodeJS API service for generating version number SVG images for GitHub project.
