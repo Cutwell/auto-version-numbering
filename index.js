@@ -70,9 +70,8 @@ app.get('/api/:user/:projectName', async (req, res) => {
 		const response = await axios.get(`https://api.github.com/repos/${user}/${projectName}/releases`);
 		const releases = response.data;
 		const latest = releases[0];
-		const tag_name = latest.tag_name || "0"
-
-		const rect_width = 10 + ((latest.tag_name.length - 1) * 5);
+		const tag_name = latest.tag_name ?? "v0"
+		const rect_width = 10 + ((tag_name.length - 1) * 5);
 		const svg_width = rect_width + 2;
 
 		// format info into SVG
