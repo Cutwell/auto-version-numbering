@@ -34,7 +34,7 @@ app.get('/test/:user/:projectName', async (req, res) => {
 		const { color = 'd5008f' } = req.query;
 
 		// Make an internal request to another route
-		const route = `http://${serverIp}:${serverPort}/svg/${user}/${projectName}?color=${color}`
+		const route = `http://${serverIp}:${serverPort}/api/${user}/${projectName}?color=${color}`
 		const response = await axios.get(route);
 
 		// Process the response
@@ -60,7 +60,7 @@ app.get('/test/:user/:projectName', async (req, res) => {
 	}
 });
 
-app.get('/svg/:user/:projectName', async (req, res) => {
+app.get('/api/:user/:projectName', async (req, res) => {
 	try {
 		// collect target username and repository from URL
 		const user = req.params.user;
@@ -95,3 +95,5 @@ const server = app.listen(port, 'localhost', () => {
 	const serverPort = server.address().port;
 	console.log(`Server is running at http://${serverIp}:${serverPort}`);
 });
+
+module.exports = app;
