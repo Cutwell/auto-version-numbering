@@ -1,7 +1,7 @@
 # Automatic Version Numbering
  NodeJS API service for generating version number `.svg` images for GitHub projects.
 
- <img src="https://auto-version-numbering.vercel.app/api/Cutwell/auto-version-numbering?color=d5008f">
+ <img src="https://auto-version-numbering.vercel.app/api/Cutwell/auto-version-numbering?color=d5008f" width=40>
 
 ## Routing
 |`https://auto-version-numbering.vercel.app`|`/api` OR `/preview`|`/:user`|`/:projectName`|`?color=:hexcode`|
