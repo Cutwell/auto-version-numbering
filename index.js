@@ -34,10 +34,6 @@ app.get('/preview/:user/:projectName', async (req, res) => {
 
 		// Make an internal request to another route
 		const route = `http://${serverIp}:${serverPort}/api/${user}/${projectName}?color=${color}`
-		const response = await axios.get(route);
-
-		// Process the response
-		const svg = response.data;
 
 		const templateHTML = `
 		<html>
@@ -45,7 +41,7 @@ app.get('/preview/:user/:projectName', async (req, res) => {
 			<title>Automatic Version Numbering</title>
 		  </head>
 		  <body>
-		  	${svg}
+		  	<img src="${route}">
 		  </body>
 		</html>
 		`;
@@ -98,7 +94,7 @@ app.get('/api/:user/:projectName', async (req, res) => {
 		const formattedSVG = templateSVG.replace('{{tag_name}}', tag_name).replace('{{svg_width}}', svg_width).replace('{{rect_width}}', rect_width).replace(/{{color}}/g, color);
 
 		// Set the response content type to SVG
-		res.set('Content-Type', 'text/svg+xml');
+		res.set('Content-Type', 'image/svg+xml');
 
 		// Send the image buffer as the response
 		res.send(formattedSVG);
