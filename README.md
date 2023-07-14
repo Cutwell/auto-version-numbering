@@ -6,7 +6,7 @@
 ## Routing
 ```mermaid
 graph LR
-    A["https://auto-version-numbering.vercel.app/"] -->|Route| B["/api"]
+    A["https://auto-version-numbering.vercel.app"] -->|Route| B["/api"]
     A --> C["/preview"]
     B -->|GitHub Username| D["/:user"]
     C --> D
