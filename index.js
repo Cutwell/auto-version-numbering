@@ -66,10 +66,30 @@ app.get('/api/:user/:projectName', async (req, res) => {
 		const projectName = req.params.projectName;
 		const { color = 'd5008f' } = req.query;
 
-		// Make a request to an external API
-		const response = await axios.get(`https://api.github.com/repos/${user}/${projectName}/releases`);
-		const releases = response.data;
-		const latest = releases[0];
+		var latest;
+		try {
+			// Make a request to an external API
+			const response = await axios.get(`https://api.github.com/repos/${user}/${projectName}/releases`);
+			const releases = response.data;
+			if (releases.length > 0) {
+				latest = releases[0];
+			} else {
+				latest = {
+					tag_name: "v0"
+				}
+			}
+		} catch (error) {
+			if (error.response && error.response.status === 404) {
+				// Handle 404 error
+				latest = {
+					tag_name: "Not Found"
+				}
+			} else {
+				// Handle other errors
+				console.error(error);
+			}
+		}
+
 		const tag_name = latest.tag_name ?? "v0"
 		const rect_width = 10 + ((tag_name.length - 1) * 5);
 		const svg_width = rect_width + 2;
